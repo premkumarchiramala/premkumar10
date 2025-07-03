@@ -2,101 +2,100 @@ import React from 'react';
 
 function App() {
   const handleShowQuote = () => {
-    const imageUrl =
-      '/src/assets/sk.jpg';
+    const imageUrl = "/sk.jpg"; // Place sk.jpg in your public folder
 
-    const win = window.open('', '', 'width=400,height=700');
+    const win = window.open("", "_blank", "width=800,height=1000");
 
     win.document.write(`
       <html>
         <head>
           <title>Quote</title>
           <style>
-            body {
+            html, body {
               margin: 0;
-              padding: 20px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
+              padding: 0;
+              width: 100%;
               font-family: Arial, sans-serif;
-              background: #f9f9f9;
-              height: 100vh;
+              background-color: #000;
+              color: white;
               text-align: center;
             }
 
-            img {
-              width: 90%;
-              max-width: 300px;
-              border-radius: 12px;
-              margin-top: 40px;
-              box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            .container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: flex-start;
+              padding: 20px;
             }
 
-            h2 {
-              font-size: 1.1rem;
+            .image-box {
+              max-width: 90%;
+              max-height: 80vh;
+            }
+
+            .image-box img {
+              width: 100%;
+              height: auto;
+              border-radius: 10px;
+            }
+
+            .quote {
               margin-top: 20px;
-              padding: 0 20px;
-              color: #333;
+              font-size: 20px;
+              background: rgba(0, 0, 0, 0.6);
+              padding: 12px 20px;
+              border-radius: 8px;
+              max-width: 90%;
             }
 
-            button {
-              margin-top: 30px;
+            .close-btn {
+              margin-top: 20px;
+            }
+
+            .close-btn button {
               padding: 10px 20px;
               font-size: 16px;
-              background-color: #dc3545;
+              background-color: #ff4d4f;
               color: white;
               border: none;
-              border-radius: 8px;
+              border-radius: 6px;
               cursor: pointer;
-            }
-
-            @media(min-width: 768px) {
-              img {
-                max-width: 350px;
-              }
-
-              h2 {
-                font-size: 1.4rem;
-              }
             }
           </style>
         </head>
         <body>
-          <img src="${imageUrl}" alt="Motivational Photo" />
-          <h2>"If you succeed without struggling, that is not a victory. That is called luck."</h2>
-          <button onclick="window.close()">Close</button>
+          <div class="container">
+            <div class="image-box">
+              <img src="${imageUrl}" alt="Motivational" />
+            </div>
+            <div class="quote">
+              "If you succeed without struggling, that is not a victory. That is called luck."
+            </div>
+            <div class="close-btn">
+              <button onclick="window.close()">Close</button>
+            </div>
+          </div>
         </body>
       </html>
     `);
-
-    win.document.close();
   };
 
   return (
     <div style={{
-      minHeight: '100vh',
-      background: '#eaf0f5',
+      height: '100vh',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: '20px',
-      textAlign: 'center'
+      background: '#fff'
     }}>
-      <h1 style={{
-        fontSize: '2.5rem',
-        letterSpacing: '0rem',
-        color: '#222',
-        userSelect: 'none'
-      }}>
-        PREM
-      </h1>
+      <h1 style={{ fontSize: '32px', fontWeight: 'bold', color: '#333' }}>PREM</h1>
       <button
         onClick={handleShowQuote}
         style={{
           marginTop: '20px',
-          padding: '12px 24px',
+          padding: '10px 20px',
           fontSize: '16px',
           backgroundColor: '#007bff',
           color: '#fff',
@@ -105,7 +104,7 @@ function App() {
           cursor: 'pointer'
         }}
       >
-        open
+        Open
       </button>
     </div>
   );
